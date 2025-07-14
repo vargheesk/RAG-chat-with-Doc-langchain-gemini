@@ -75,7 +75,7 @@ class LangChainRAGPipeline:
 def main():
     st.set_page_config(page_title="Chat With Your Documents", page_icon="💬")
     st.title("💬 Chat With Your Documents")
-    st.markdown("Upload a PDF, TXT, or DOCX file and start asking questions!")
+    st.markdown("Upload a PDF, TXT, or DOCX file and start asking questions!(wait for 2-3 minute to load fully)")
 
 
 
