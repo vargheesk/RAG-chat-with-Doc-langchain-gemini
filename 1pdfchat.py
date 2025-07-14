@@ -7,7 +7,7 @@ load_dotenv()
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_unstructured import UnstructuredLoader 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -56,7 +56,8 @@ class LangChainRAGPipeline:
             
             documents = loader.load()
             texts = self.text_splitter.split_documents(documents)
-            vectorstore = Chroma.from_documents(texts, self.embeddings)
+            vectorstore = FAISS.from_documents(texts, self.embeddings)
+
             retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
             
 
